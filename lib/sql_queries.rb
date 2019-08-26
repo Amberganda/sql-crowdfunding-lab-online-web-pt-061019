@@ -28,9 +28,9 @@ end
 
 def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_funding_goal
   %q(
-    SELECT projects.title, pledges.amount - SUM(pledges.amount) AS result
+    SELECT projects.title, pledges.amount - SUM(pledges.amount)
     FROM projects
-    INNER JOIN pledges ON projects.funding_goal = pledges.project_id
+    INNER JOIN pledges ON projects.id = pledges.project_id
     GROUP BY projects.funding_goal
   )
 end
